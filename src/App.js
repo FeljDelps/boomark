@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import Addbookmark from './Addbookmark';
+import Addbookmark from './AddBookmark/Addbookmark';
+import BookmarkApp from './BookmarkApp/BookmarkApp';
 
 class App extends Component {
   render(){
     return(
       <div className='App'>
+        <BookmarkApp />
         <Addbookmark />
       </div>
     )
