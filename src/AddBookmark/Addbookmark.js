@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 
 //In React, the text to be displayed in a textarea is added as a value prop, instead as of adding as children
-class Addboomark extends Component {
+class AddBoomark extends Component {
     render(){
         return(
             <div className='addBookmark'>
@@ -31,4 +31,4 @@ class Addboomark extends Component {
     }
 }
 
-export default Addboomark;
+export default AddBoomark;
