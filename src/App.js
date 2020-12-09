@@ -41,15 +41,34 @@ class App extends Component {
           err:err.message
         });
       })
-
-
   }
 
+  //This method sets state for the showAddForm property, for interactivity, passed onto the Fab component
+  setShowAddForm(show){
+    this.setState({
+      showAddForm:show
+    })
+  }
+
+  //This method is responsible for when a bookmark is added, for interactivity.  Notice we don't push the new bookmark into state, which would have mutated it.  Instead use the ...spread operator
+  //to copy the bookmarks array into a new array, then add the new bookmark to the end of that array.  Also, set showAddForm to false because when new bookmark is added we want to show the list again
+  addBookmark(bookmark){
+    this.setState({
+      bookmarks:[...this.state.bookmarks, bookmark],
+      showAddForm:false
+    });
+  }
   
   render(){
     
     //this variable conditionally displays the Addbookmark component if it's true, otherwise it displays the BookmarkApp component
-    const page = this.state.showAddForm ? <AddBookmark /> : <BookmarkApp bookmarks={this.state.bookmarks} />
+    const page = this.state.showAddForm ? 
+      <AddBookmark 
+        showForm={show => this.setShowAddForm(show)}
+        handleAdd={bookmark => this.addBookmark(bookmark)}/> : 
+      <BookmarkApp 
+        bookmarks={this.state.bookmarks} 
+        showForm={show => this.setShowAddForm(show)}/>
     
     return(
       <div className='App'>
